@@ -4,14 +4,20 @@
 
 1. Set up Vundle:
 
-$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```bash
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+```
 
 2. Clone .vimrc
 
-$ wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
+```bash
+wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
+```
 
 ## Issues
 
-If vim cannot yank to system clipboard, try reinstall vim with gtk.
+If vim cannot register system clipboard, try reinstalling vim with gtk.
 
-$ sudo apt-get install vim-gtk
+```bash
+sudo apt-get install vim-gtk
+```
