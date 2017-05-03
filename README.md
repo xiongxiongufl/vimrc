@@ -1,17 +1,17 @@
 # vimrc
 
-## This repo stores the configuration of my vim editor.
+This repo stores the configuration of my vim editor.
 
 1. Set up Vundle:
 
 ```bash
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+$ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
 2. Clone .vimrc
 
 ```bash
-wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
+$ wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
 ```
 
 ## Issues
@@ -19,5 +19,5 @@ wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
 If vim cannot register system clipboard, try reinstalling vim with gtk.
 
 ```bash
-sudo apt-get install vim-gtk
+$ sudo apt-get install vim-gtk
 ```
