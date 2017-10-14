@@ -23,6 +23,7 @@ Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'delimitMate.vim'
+Plugin 'shmup/vim-sql-syntax'
 
 "
 " " The following are examples of different formats supported.
@@ -265,14 +266,6 @@ let g:SimpylFold_docstring_preview=1
 " One issue with the goto definition above is that VIM by default doesn’t know
 " anything about virtualenv, so you have to make VIM and YouCompleteMe aware of
 " your virtualenv by adding the following lines of code 
-py << EOF
-import os
-import sys
-if 'VIRTUAL_ENV' in os.environ:
-  project_base_dir = os.environ['VIRTUAL_ENV']
-  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-  execfile(activate_this, dict(__file__=activate_this))
-EOF
 
 " make your code look pretty after installing the two plugins
 " Plugin 'scrooloose/syntastic'
