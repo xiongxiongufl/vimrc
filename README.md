@@ -31,6 +31,12 @@ $ cd ~/.vim/bundle/YouCompleteMe
 $ ./install.sh --all
 ```
 
+6. Get color scheme
+```bash
+$ mkdir -p ~/.vim/colors && cd ~/.vim/colors
+$ wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+```
+
 ## Issues
 
 If vim cannot register system clipboard, try reinstalling vim with gtk.
