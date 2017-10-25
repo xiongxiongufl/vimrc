@@ -25,6 +25,12 @@ $ wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
 :PluginInstall
 ```
 
+5. Finish installing YouCompleteMe 
+```bash
+$ cd ~/.vim/bundle/YouCompleteMe
+$ ./install.sh --all
+```
+
 ## Issues
 
 If vim cannot register system clipboard, try reinstalling vim with gtk.
