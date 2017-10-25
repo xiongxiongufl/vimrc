@@ -22,8 +22,15 @@ Plugin 'nvie/vim-flake8'
 Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'delimitMate.vim'
-Plugin 'shmup/vim-sql-syntax'
+Plugin 'scrooloose/nerdcommenter'
+
+
+
+" specify different areas of the screen where the splits should occur
+set splitbelow
+set splitright
 
 "
 " " The following are examples of different formats supported.
@@ -141,6 +148,13 @@ autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
+" Color scheme
+" mkdir -p ~/.vim/colors && cd ~/.vim/colors
+" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
+set t_Co=256
+color wombat256mod
+
+
 " Enable syntax highlighting
 " You need to reload this file for the change to apply
 filetype off
@@ -196,6 +210,13 @@ set nowritebackup
 set noswapfile
 
 
+" Setup Pathogen to manage your plugins
+" mkdir -p ~/.vim/autoload ~/.vim/bundle
+" curl -so ~/.vim/autoload/pathogen.vim https://raw.githubusercontent.com/tpope/vim-pathogen/master/autoload/pathogen.vim
+" Now you can install any plugin into a .vim/bundle/plugin-name/ folder
+call pathogen#infect()
+
+
 " ============================================================================
 " Python IDE Setup
 " ============================================================================
@@ -234,10 +255,10 @@ set wildignore+=*/coverage/*
 " Settings for jedi-vim
 " cd ~/.vim/bundle
 " git clone git://github.com/davidhalter/jedi-vim.git
-let g:jedi#usages_command = "<leader>z"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+" let g:jedi#usages_command = "<leader>z"
+" let g:jedi#popup_on_dot = 0
+" let g:jedi#popup_select_first = 0
+" map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
 
 " Better navigating through omnicomplete option list
 " See http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
@@ -261,11 +282,21 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 " set foldmethod=indent
 " set foldlevel=99
 let g:SimpylFold_docstring_preview=1
+" automatic unfold everthing when opending a file
+au BufRead * normal zR
 
 " python with virtualenv support
 " One issue with the goto definition above is that VIM by default doesn’t know
 " anything about virtualenv, so you have to make VIM and YouCompleteMe aware of
 " your virtualenv by adding the following lines of code 
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
 
 " make your code look pretty after installing the two plugins
 " Plugin 'scrooloose/syntastic'
@@ -279,7 +310,28 @@ set encoding=utf-8
 
 " Setting for Plugin 'scrooloose/nerdtree'
 let NERDTreeIgnore=['\.pyc$', '\~$'] "ignore files in NERDTree
+" Open NERDTree with Ctrl-n 
+map <C-n> :NERDTreeToggle<CR>
+" Open NERDTree when Vim startsup and no files were specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" Close Vim if the only window left open is NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Setting for Plugin 'Valloric/YouCompleteMe'
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+let g:ycm_collect_identifiers_from_tags_files = 1 " Let YCM read tags from Ctags file
+let g:ycm_use_ultisnips_completer = 1 " Default 1, just ensure
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+
+map <F4> :YcmCompleter GoTo<CR>
+
+
+
+" Setting for NERD commenter
+filetype plugin on
