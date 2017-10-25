@@ -8,13 +8,18 @@ This repo stores the configuration of my vim editor.
 $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-2. Clone .vimrc
+2. Get Pathogen
+```bash
+$ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+```
+
+3. Clone .vimrc
 
 ```bash
 $ wget https://raw.githubusercontent.com/xiongxiongufl/vimrc/master/.vimrc ~/
 ```
 
-3. Install plugins
+4. Install plugins
 
 ```vim
 :PluginInstall
