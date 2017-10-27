@@ -35,6 +35,9 @@ $ ./install.sh --all
 ```
 
 ## Issues
+If vim was not built with support for a specific language, e.g., python2/3, then build from source with the support is a solution, for exmaple, on debian jessie.
+Follow the instruction: 
+https://github.com/Valloric/YouCompleteMe/wiki/Building-Vim-from-source
 
 If vim cannot register system clipboard, try reinstalling vim with gtk.
 
