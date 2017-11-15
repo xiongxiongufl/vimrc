@@ -191,10 +191,8 @@ au BufNewFile, BufRead *.py
     \ set autoindent
     \ set fileformat=unix
 
-au BufNewFile,BufRead *.js, *.html, *.css, *.R
-    \ set tabstop=2
-    \ set softtabstop=2
-    \ set shiftwidth=2
+au BufNewFile,BufRead *.js,*.html,*.css,*.R
+    \ set tabstop=2 set softtabstop=2 set shiftwidth=2
 
 " Make search case insensitive
 set hlsearch
