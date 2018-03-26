@@ -9,7 +9,8 @@ $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 2. Get Pathogen
 ```bash
-$ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+$ mkdir ~/.vim/autoload
+$ curl -o ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 ```
 
 3. Get color scheme
